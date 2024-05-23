@@ -18,9 +18,9 @@ import traceback
 app = Flask(__name__)
 static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
 # Channel Access Token
-line_bot_api = LineBotApi(os.getenv('muViR65ZYVJhUv8tf0PVI8EbMSTOl44Cdz8XxNa+r69auP0twVEWLKTKxv0SjFyYJzW4cPonW9WR2imIvRNN01FxiBtRbz+O5ot+gFUNsb9YBD3m5SQy6RYiU+eZlSLMi4KRZZW1aPGPQ/4gcZJGlQdB04t89/1O/w1cDnyilFU='))
+line_bot_api = LineBotApi(os.getenv('Channel Access Token'))
 # Channel Secret
-handler = WebhookHandler(os.getenv('4aeec8dd13bccc6f8eb66415a3aa21b9'))
+handler = WebhookHandler(os.getenv('Channel Secret'))
 
 def QA_response(text):
     client = QuestionAnsweringClient(endpoint, credential)
