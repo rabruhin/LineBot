@@ -44,7 +44,7 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     questions_answers = {
-        "說話程式": "print('Hello, world!')",
+        "說話程式": print('Hello, world!'),
         "兩數相加程式": "# Store input numbers
                         num1 = input('Enter first number: ')
                         num2 = input('Enter second number: ')
