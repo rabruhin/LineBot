@@ -44,25 +44,184 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     questions_answers = {
-        "apple": "蘋果",
-        "banana": "香蕉",
-        "cat": "貓",
-        "dog": "狗",
-        "elephant": "大象",
-        "flower": "花",
-        "guitar": "吉他",
-        "house": "房子",
-        "ice": "冰",
-        "你今天來這裡的原因是什麼？": "我感到工作和個人責任讓我不堪重負。",
-        "你最近的感覺如何？": "我大多數時候感到焦慮和壓力很大。",
-        "你能描述一下你目前的心情嗎？": "我經常感到悲傷和沮喪。",
-        "你最近經歷過什麼重大生活變化嗎？": "是的，我最近搬到了一個新城市工作。",
-        "你通常如何應對壓力？": "我通常會試圖通過愛好或鍛煉來分散注意力，但這並不總是有效。",
-        "你有可以依靠的支持系統嗎？": "我有幾個可以談心的親密朋友和家人。",
-        "你喜歡做哪些活動？": "我喜歡閱讀、遠足和畫畫。",
-        "你有注意到你的睡眠模式有變化嗎？": "是的，我最近一直很難入睡和保持睡眠。",
-        "你對這次心理輔導有什麼目標？": "我希望學會更好地管理壓力，並提高我的整體幸福感。",
-        "還有什麼你認為我應該知道的嗎？": "我有時覺得自己不夠好，這影響了我的自信心。"
+        "說話程式": "print('Hello, world!')",
+        "兩數相加程式": "# Store input numbers
+                        num1 = input('Enter first number: ')
+                        num2 = input('Enter second number: ')
+
+                        # Add two numbers
+                        sum = float(num1) + float(num2)
+
+                        # Display the sum
+                        print('The sum of {0} and {1} is {2}'.format(num1, num2, sum))",
+        "交換變數": "# Python program to swap two variables
+                    
+                    x = 5
+                    y = 10
+                    
+                    # To take inputs from the user
+                    #x = input('Enter value of x: ')
+                    #y = input('Enter value of y: ')
+                    
+                    # create a temporary variable and swap the values
+                    temp = x
+                    x = y
+                    y = temp
+                    
+                    print('The value of x after swapping: {}'.format(x))
+                    print('The value of y after swapping: {}'.format(y))
+                    ",
+        "隨機數字": "import random
+
+                    print(random.randint(0,9))",
+        "解二次方程式": "import cmath
+                    
+                    a = 1
+                    b = 5
+                    c = 6
+                    
+                    # calculate the discriminant
+                    d = (b**2) - (4*a*c)
+                    
+                    # find two solutions
+                    sol1 = (-b-cmath.sqrt(d))/(2*a)
+                    sol2 = (-b+cmath.sqrt(d))/(2*a)
+                    
+                    print('The solution are {0} and {1}'.format(sol1,sol2))",
+        "發牌程式": "# Python program to shuffle a deck of card
+
+                    # importing modules
+                    import itertools, random
+
+                    # make a deck of cards
+                    deck = list(itertools.product(range(1,14),['Spade','Heart','Diamond','Club']))
+
+                    # shuffle the cards
+                    random.shuffle(deck)
+
+                    # draw five cards
+                    print("You got:")
+                    for i in range(5):
+                     print(deck[i][0], "of", deck[i][1])
+                    ",
+        "顯示日歷": "import calendar
+                    
+                    yy = 2014  # year
+                    mm = 11    # month
+                    
+                    # To take month and year input from the user
+                    # yy = int(input("Enter year: "))
+                    # mm = int(input("Enter month: "))
+                    
+                    # display the calendar
+                    print(calendar.month(yy, mm))",
+        "質數檢查": "# Program to check if a number is prime or not
+                    
+                    num = 29
+                    
+                    # To take input from the user
+                    #num = int(input("Enter a number: "))
+                    
+                    # define a flag variable
+                    flag = False
+                    
+                    if num == 1:
+                        print(num, "is not a prime number")
+                    elif num > 1:
+                        # check for factors
+                        for i in range(2, num):
+                            if (num % i) == 0:
+                                # if factor is found, set flag to True
+                                flag = True
+                                # break out of loop
+                                break
+                    
+                        # check if flag is True
+                        if flag:
+                            print(num, "is not a prime number")
+                        else:
+                            print(num, "is a prime number")",
+        "檢查是否是閏年": "# Python program to check if year is a leap year or not
+                            
+                            year = 2000
+                            
+                            # To get year (integer input) from the user
+                            # year = int(input("Enter a year: "))
+                            
+                            # divided by 100 means century year (ending with 00)
+                            # century year divided by 400 is leap year
+                            if (year % 400 == 0) and (year % 100 == 0):
+                                print("{0} is a leap year".format(year))
+                            
+                            # not divided by 100 means not a century year
+                            # year divided by 4 is a leap year
+                            elif (year % 4 ==0) and (year % 100 != 0):
+                                print("{0} is a leap year".format(year))
+                            
+                            # if not divided by both 400 (century year) and 4 (not century year)
+                            # year is not leap year
+                            else:
+                                print("{0} is not a leap year".format(year))",
+        "找出因數": "# Python program to find the factorial of a number provided by the user.
+                    
+                    # change the value for a different result
+                    num = 7
+                    
+                    # To take input from the user
+                    #num = int(input("Enter a number: "))
+                    
+                    factorial = 1
+                    
+                    # check if the number is negative, positive or zero
+                    if num < 0:
+                       print("Sorry, factorial does not exist for negative numbers")
+                    elif num == 0:
+                       print("The factorial of 0 is 1")
+                    else:
+                       for i in range(1,num + 1):
+                           factorial = factorial*i
+                       print("The factorial of",num,"is",factorial)
+                    ",
+        "": "num = float(input("Enter a number: "))
+                                  if num > 0:
+                                     print("Positive number")
+                                            elif num == 0:
+                                               print("Zero")
+                                            else:
+                                               print("Negative number")",
+        "十進位轉二進位": "# Function to print binary number using recursion
+                            def convertToBinary(n):
+                                if n > 1:
+                                     convertToBinary(n//2)
+                                print(n % 2,end = '')
+                                
+                            # decimal number
+                            dec = 34
+                                
+                            convertToBinary(dec)
+                            print()",
+        "找出最大數": "  # Python program to find the largest number among the three input numbers
+                        
+                        # change the values of num1, num2 and num3
+                        # for a different result
+                        num1 = 10
+                        num2 = 14
+                        num3 = 12
+                        
+                        # uncomment following lines to take three numbers from user
+                        #num1 = float(input("Enter first number: "))
+                        #num2 = float(input("Enter second number: "))
+                        #num3 = float(input("Enter third number: "))
+                        
+                        if (num1 >= num2) and (num1 >= num3):
+                           largest = num1
+                        elif (num2 >= num1) and (num2 >= num3):
+                           largest = num2
+                        else:
+                           largest = num3
+                        
+                        print("The largest number is", largest)
+                        ",
     }
     if msg in questions_answers:
         #print(f"{english_word} 的中文翻譯是：{words_dict[english_word]}")
