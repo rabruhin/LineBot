@@ -44,7 +44,7 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     questions_answers = {
-         "說話程式": "print('Hello, world!')",
+        "說話程式": "print('Hello, world!')",
         "兩數相加程式": "# Store input numbers\nnum1 = input('Enter first number: ')\nnum2 = input('Enter second number: ')\n\n# Add two numbers\nsum = float(num1) + float(num2)\n\n# Display the sum\nprint('The sum of {0} and {1} is {2}'.format(num1, num2, sum))",
         "交換變數": "# Python program to swap two variables\n\nx = 5\ny = 10\n\n# To take inputs from the user\n#x = input('Enter value of x: ')\n#y = input('Enter value of y: ')\n\n# create a temporary variable and swap the values\ntemp = x\nx = y\ny = temp\n\nprint('The value of x after swapping: {}'.format(x))\nprint('The value of y after swapping: {}'.format(y))",
         "隨機數字": "import random\n\nprint(random.randint(0,9))",
