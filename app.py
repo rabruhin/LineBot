@@ -59,7 +59,7 @@ def handle_message(event):
         "找出最大數": "# Python program to find the largest number among the three input numbers\n\n# change the values of num1, num2 and num3\n# for a different result\nnum1 = 10\nnum2 = 14\nnum3 = 12\n\n# uncomment following lines to take three numbers from user\n#num1 = float(input('Enter first number: '))\n#num2 = float(input('Enter second number: '))\n#num3 = float(input('Enter third number: '))\n\nif (num1 >= num2) and (num1 >= num3):\n    largest = num1\nelif (num2 >= num1) and (num2 >= num3):\n    largest = num2\nelse:\n    largest = num3\n\nprint('The largest number is', largest)"
     }
     if msg in questions_answers:
-        #print(f"{english_word} 的中文翻譯是：{words_dict[english_word]}")
+        #print(f"{english_word} 的程式是：{words_dict[english_word]}")
     
         line_bot_api.reply_message(event.reply_token, TextSendMessage(questions_answers[msg]))
     else:
