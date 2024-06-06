@@ -15,6 +15,9 @@ import time
 import traceback
 #======python的函數庫==========
 
+from azure.core.credentials import AzureKeyCredential
+from azure.ai.language.questionanswering import QuestionAnsweringClient
+
 app = Flask(__name__)
 static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
 # Channel Access Token
@@ -22,6 +25,21 @@ line_bot_api = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
 # Channel Secret
 handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 
+endpoint = os.getenv('END_POINT')
+credential = AzureKeyCredential(os.getenv('AZURE_KEY'))
+knowledge_base_project = os.getenv('PROJECT')
+deployment = 'production'
+
+def QA_response(text):
+    client = QuestionAnsweringClient(endpoint, credential)
+    with client:
+        question=text
+        output = client.get_answers(
+            question = question,
+            project_name=knowledge_base_project,
+            deployment_name=deployment
+        )
+    return output.answers[0].answer
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
