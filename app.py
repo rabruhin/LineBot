@@ -61,6 +61,14 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
+    if msg[0]!='-':
+        try:
+            QA_answer = QA_response(msg)
+            print(QA_answer)
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(QA_answer))
+        except:
+            print(traceback.format_exc())
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('QA Error'))
     questions_answers = {
         "說話程式": "print('Hello, world!')",
         "兩數相加程式": "# Store input numbers\nnum1 = input('Enter first number: ')\nnum2 = input('Enter second number: ')\n\n# Add two numbers\nsum = float(num1) + float(num2)\n\n# Display the sum\nprint('The sum of {0} and {1} is {2}'.format(num1, num2, sum))",
@@ -76,14 +84,6 @@ def handle_message(event):
         "十進位轉二進位": "# Function to print binary number using recursion\n\ndef convertToBinary(n):\n    if n > 1:\n        convertToBinary(n//2)\n    print(n % 2,end = '')\n\n# decimal number\ndec = 34\n\nconvertToBinary(dec)\nprint()",
         "找出最大數": "# Python program to find the largest number among the three input numbers\n\n# change the values of num1, num2 and num3\n# for a different result\nnum1 = 10\nnum2 = 14\nnum3 = 12\n\n# uncomment following lines to take three numbers from user\n#num1 = float(input('Enter first number: '))\n#num2 = float(input('Enter second number: '))\n#num3 = float(input('Enter third number: '))\n\nif (num1 >= num2) and (num1 >= num3):\n    largest = num1\nelif (num2 >= num1) and (num2 >= num3):\n    largest = num2\nelse:\n    largest = num3\n\nprint('The largest number is', largest)"
     }
-    if msg[0]!='-':
-    try:
-        QA_answer = QA_response(msg)
-        print(QA_answer)
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(QA_answer))
-    except:
-        print(traceback.format_exc())
-        line_bot_api.reply_message(event.reply_token, TextSendMessage('QA Error'))
     if msg in questions_answers:
         #print(f"{english_word} 的程式是：{words_dict[english_word]}")
     
